@@ -1,5 +1,8 @@
 <?php
 
+use App\Jobs\MakeSum;
+use App\Jobs\FindMaxPrime;
+use App\Jobs\ConverterCelsius;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -23,3 +26,34 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('auth');
+
+Route::get('/primo/{limit}', function($limit)
+{
+    FindMaxPrime::dispatch($limit, auth()->id());
+
+    return 'O calculo será realizado em fila';
+});
+
+Route::get('/notifications', function()
+{
+    $user->alth()->user();
+
+    foreach($user->unreadNotifications as $noti)
+    {
+        echo $noti->data['description'];
+    }
+});
+
+Route::get('/makesum/{num1}/{num2}', function($num1, $num2)
+{
+    MakeSum::dispatch($num1, $num2);
+
+    return 'O calculo será realizado em fila';
+});
+
+Route::get('/celsius/{farenheit}', function($farenheit)
+{
+    ConverterCelsius::dispatch($farenheit);
+
+    return 'O calculo será realizado em fila';
+});
