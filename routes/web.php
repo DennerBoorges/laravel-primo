@@ -2,6 +2,7 @@
 
 use App\Jobs\MakeSum;
 use App\Jobs\FindMaxPrime;
+use App\Jobs\ConvertCelsius;
 use App\Jobs\ConverterCelsius;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -53,7 +54,7 @@ Route::get('/makesum/{num1}/{num2}', function($num1, $num2)
 
 Route::get('/celsius/{farenheit}', function($farenheit)
 {
-    ConverterCelsius::dispatch($farenheit);
+    ConvertCelsius::dispatch($farenheit);
 
     return 'O calculo será realizado em fila';
 });

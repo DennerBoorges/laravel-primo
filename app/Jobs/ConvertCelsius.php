@@ -9,7 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class ConverterCelsius implements ShouldQueue
+class ConvertCelsius implements ShouldQueue
 {
     public $farenheit;
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
